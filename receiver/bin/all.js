@@ -715,9 +715,15 @@ cast.games.starcast.StarcastGame.prototype.onAssetsLoaded_ = function() {
     this.container_.addChild(bullet);
     this.playerBullets_.push(bullet);
   }
-  for (i = 0;12 > i;i++) {
-    var explosionTexture = PIXI.Texture.fromFrame("explosion" + (i + 1));
-    this.explosionTextures_.push(explosionTexture);
+  //for (i = 0;12 > i;i++) {
+  //  var explosionTexture = PIXI.Texture.fromFrame("explosion" + (i + 1));
+  //  this.explosionTextures_.push(explosionTexture);
+  //}
+  for (var i = 0; i < 12; i++) {
+    for (var j = 0; j < 3; j++) {
+      var explosionTexture = PIXI.Texture.fromFrame('explosion' + (i + 1));
+      this.explosionTextures_.push(explosionTexture);
+    }
   }
   for (i = 0;i < this.MAX_EXPLOSIONS_;i++) {
     var explosion = new PIXI.extras.MovieClip(this.explosionTextures_);
