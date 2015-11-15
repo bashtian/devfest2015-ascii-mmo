@@ -70,7 +70,7 @@ cast.games.starcast.StarcastGame = function(gameManager) {
   this.MAX_PLAYER_BULLETS_ = 20;
 
   /** @private {number} */
-  this.MAX_EXPLOSIONS_ = 5;
+  this.MAX_EXPLOSIONS_ = 15;
 
   /** @private {number} */
   this.MIN_SPEED_ = 10;
@@ -329,7 +329,7 @@ cast.games.starcast.StarcastGame.prototype.onAssetsLoaded_ = function() {
     this.explosionTextures_.push(explosionTexture);
   }
 
-  for (var i = 0; i < this.MAX_EXPLOSIONS_; i++) {
+  for (var i = 0; i < this.MAX_EXPLOSIONS_; i+3) {
     var explosion = new PIXI.extras.MovieClip(this.explosionTextures_);
     explosion.anchor.x = 0.5;
     explosion.anchor.y = 0.5;
