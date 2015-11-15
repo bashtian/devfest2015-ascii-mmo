@@ -11,12 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package com.google.cast.samples.games.starcast;
-
-import com.google.android.gms.cast.games.GameManagerClient;
-import com.google.android.gms.cast.games.GameManagerState;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
+package devfest2015.asciimmo;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -30,6 +25,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.cast.games.GameManagerClient;
+import com.google.android.gms.cast.games.GameManagerState;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+
 import java.util.Observable;
 import java.util.Observer;
 
@@ -39,7 +39,7 @@ import java.util.Observer;
 public class MainActivity extends ActionBarActivity implements Observer {
     private static final String TAG = "MainActivity";
     private CastConnectionFragment mCastConnectionFragment;
-    private StarCastFragment mStarCastFragment;
+    private AsciiMmoFragment mAsciiMmoFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,8 @@ public class MainActivity extends ActionBarActivity implements Observer {
         if (mCastConnectionFragment == null) {
             mCastConnectionFragment = new CastConnectionFragment();
         }
-        if (mStarCastFragment == null) {
-            mStarCastFragment = new StarCastFragment();
+        if (mAsciiMmoFragment == null) {
+            mAsciiMmoFragment = new AsciiMmoFragment();
         }
 
         updateFragments();
@@ -60,20 +60,20 @@ public class MainActivity extends ActionBarActivity implements Observer {
     protected void onResume() {
         super.onResume();
         CastConnectionManager manager =
-                StarcastApplication.getInstance().getCastConnectionManager();
+                AsciiMmoApplication.getInstance().getCastConnectionManager();
         manager.startScan();
         manager.addObserver(this);
-        StarcastApplication.getInstance().getSendMessageHandler().resumeSendingMessages();
+        AsciiMmoApplication.getInstance().getSendMessageHandler().resumeSendingMessages();
         updateFragments();
     }
 
     @Override
     protected void onPause() {
         CastConnectionManager manager =
-                StarcastApplication.getInstance().getCastConnectionManager();
+                AsciiMmoApplication.getInstance().getCastConnectionManager();
         manager.stopScan();
         manager.deleteObserver(this);
-        StarcastApplication.getInstance().getSendMessageHandler().flushMessages();
+        AsciiMmoApplication.getInstance().getSendMessageHandler().flushMessages();
         super.onPause();
     }
 
@@ -91,7 +91,7 @@ public class MainActivity extends ActionBarActivity implements Observer {
             Log.w(TAG, "mediaRouteActionProvider is null!");
             return false;
         }
-        mediaRouteActionProvider.setRouteSelector(StarcastApplication.getInstance().
+        mediaRouteActionProvider.setRouteSelector(AsciiMmoApplication.getInstance().
                 getCastConnectionManager().getMediaRouteSelector());
         return true;
     }
@@ -102,7 +102,7 @@ public class MainActivity extends ActionBarActivity implements Observer {
     @Override
     public void update(Observable object, Object data) {
         CastConnectionManager manager =
-                StarcastApplication.getInstance().getCastConnectionManager();
+                AsciiMmoApplication.getInstance().getCastConnectionManager();
         if (manager.isConnectedToReceiver() && !hasPlayerConnected()) {
             final GameManagerClient gameManagerClient = manager.getGameManagerClient();
             PendingResult<GameManagerClient.GameManagerResult> result =
@@ -112,7 +112,7 @@ public class MainActivity extends ActionBarActivity implements Observer {
                 @Override
                 public void onResult(final GameManagerClient.GameManagerResult gameManagerResult) {
                     if (!gameManagerResult.getStatus().isSuccess()) {
-                        StarcastApplication.getInstance().getCastConnectionManager().
+                        AsciiMmoApplication.getInstance().getCastConnectionManager().
                                 disconnectFromReceiver(false);
                         showErrorDialog(gameManagerResult.getStatus().getStatusMessage());
                     }
@@ -159,7 +159,7 @@ public class MainActivity extends ActionBarActivity implements Observer {
 
         Fragment fragment;
         if (hasPlayerConnected()) {
-            fragment = mStarCastFragment;
+            fragment = mAsciiMmoFragment;
         } else {
             fragment = mCastConnectionFragment;
         }
@@ -171,7 +171,7 @@ public class MainActivity extends ActionBarActivity implements Observer {
 
     private boolean hasPlayerConnected() {
         CastConnectionManager manager =
-                StarcastApplication.getInstance().getCastConnectionManager();
+                AsciiMmoApplication.getInstance().getCastConnectionManager();
         GameManagerClient gameManagerClient = manager.getGameManagerClient();
         if (manager.isConnectedToReceiver()) {
             GameManagerState state = gameManagerClient.getCurrentState();

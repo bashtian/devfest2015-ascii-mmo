@@ -11,7 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package com.google.cast.samples.games.starcast;
+package devfest2015.asciimmo;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -35,9 +35,9 @@ public class TouchControllerView extends View {
                 float y = event.getY();
                 float screenHeight = getHeight();
                 float scaled = y / screenHeight;
-                StarcastApplication.getInstance().getSendMessageHandler().enqueueMessage(
-                        StarCastFragment.MESSAGE_TYPE_STARCAST_MOVE,
-                        StarCastFragment.createMoveMessage(scaled));
+                AsciiMmoApplication.getInstance().getSendMessageHandler().enqueueMessage(
+                        AsciiMmoFragment.MESSAGE_TYPE_STAR_MOVE,
+                        AsciiMmoFragment.createMoveMessage(scaled));
                 break;
             default:
                 return false;

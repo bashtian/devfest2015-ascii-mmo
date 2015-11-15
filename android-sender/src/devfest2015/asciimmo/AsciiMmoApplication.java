@@ -11,17 +11,17 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package com.google.cast.samples.games.starcast;
+package devfest2015.asciimmo;
 
 import android.app.Application;
 
 /**
  * The application class.
  */
-public class StarcastApplication extends Application
+public class AsciiMmoApplication extends Application
         implements CastConnectionManager.CastAppIdProvider {
 
-    private static StarcastApplication sInstance;
+    private static AsciiMmoApplication sInstance;
 
     private CastConnectionManager mCastConnectionManager;
     private SendMessageHandler mSendMessageHandler;
@@ -34,7 +34,7 @@ public class StarcastApplication extends Application
         mSendMessageHandler = new SendMessageHandler(mCastConnectionManager);
     }
 
-    public static StarcastApplication getInstance() {
+    public static AsciiMmoApplication getInstance() {
         return sInstance;
     }
 

@@ -11,7 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package com.google.cast.samples.games.starcast;
+package devfest2015.asciimmo;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -26,15 +26,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * The main activity for StarCast game.
+ * The main activity for Ascii MMO.
  */
-public class StarCastFragment extends Fragment {
-    private static final String TAG = "StarCastFragment";
+public class AsciiMmoFragment extends Fragment {
+    private static final String TAG = "AsciiMmoFragment";
 
-    public static final int MESSAGE_TYPE_STARCAST_FIRE = 1;
-    public static final int MESSAGE_TYPE_STARCAST_MOVE = 2;
-    private static final String MESSAGE_FIELD_STARCAST_FIRE = "fire";
-    private static final String MESSAGE_FIELD_STARCAST_MOVE = "move";
+    public static final int MESSAGE_TYPE_STAR_FIRE = 1;
+    public static final int MESSAGE_TYPE_STAR_MOVE = 2;
+    private static final String MESSAGE_FIELD_STAR_FIRE = "fire";
+    private static final String MESSAGE_FIELD_STAR_MOVE = "move";
 
     private TouchControllerView mTouchControllerView;
     private Button mFireButton;
@@ -43,7 +43,7 @@ public class StarCastFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.starcast_main, container, false);
+        View view = inflater.inflate(R.layout.asciimmo_main, container, false);
 
         mTouchControllerView = (TouchControllerView) view.findViewById(R.id.touch_controller);
 
@@ -52,8 +52,8 @@ public class StarCastFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                StarcastApplication.getInstance().getSendMessageHandler().enqueueMessage(
-                        MESSAGE_TYPE_STARCAST_FIRE, createFireMessage());
+                AsciiMmoApplication.getInstance().getSendMessageHandler().enqueueMessage(
+                    MESSAGE_TYPE_STAR_FIRE, createFireMessage());
             }
 
         });
@@ -63,7 +63,7 @@ public class StarCastFragment extends Fragment {
     public static JSONObject createFireMessage() {
         JSONObject fireMessage = new JSONObject();
         try {
-            fireMessage.put(MESSAGE_FIELD_STARCAST_FIRE, true);
+            fireMessage.put(MESSAGE_FIELD_STAR_FIRE, true);
         } catch (JSONException e) {
             Log.e(TAG, "Error creating JSON fire message", e);
         }
@@ -73,7 +73,7 @@ public class StarCastFragment extends Fragment {
     public static JSONObject createMoveMessage(float move) {
         JSONObject moveMessage = new JSONObject();
         try {
-            moveMessage.put(MESSAGE_FIELD_STARCAST_MOVE, move);
+            moveMessage.put(MESSAGE_FIELD_STAR_MOVE, move);
         } catch (JSONException e) {
             Log.e(TAG, "Error creating JSON move message", e);
         }

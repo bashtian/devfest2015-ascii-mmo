@@ -11,7 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package com.google.cast.samples.games.starcast;
+package devfest2015.asciimmo;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -37,7 +37,7 @@ public class CastConnectionFragment extends Fragment implements Observer {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        mCastConnectionManager = StarcastApplication.getInstance().getCastConnectionManager();
+        mCastConnectionManager = AsciiMmoApplication.getInstance().getCastConnectionManager();
         mCastConnectionManager.addObserver(this);
     }
 

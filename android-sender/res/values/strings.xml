@@ -16,9 +16,9 @@ limitations under the License.
 -->
 <resources>
 
-    <string name="app_name">StarCast</string>
+    <string name="app_name">Ascii MMO</string>
     <string name="media_route_menu_title">Play on&#8230;</string>
-    <string name="game_name_starcast">Star Cast</string>
+    <string name="game_name_asciimmo">Ascii MMO</string>
     <string name="button_fire">Fire!</string>
     <string name="connect_label">Connect to the Google Cast device to start playing</string>
     <string name="game_connection_error_message">Game Connection Error</string>

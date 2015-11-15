@@ -11,7 +11,14 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package com.google.cast.samples.games.starcast;
+package devfest2015.asciimmo;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v7.media.MediaRouteSelector;
+import android.support.v7.media.MediaRouter;
+import android.support.v7.media.MediaRouter.RouteInfo;
+import android.util.Log;
 
 import com.google.android.gms.cast.ApplicationMetadata;
 import com.google.android.gms.cast.Cast;
@@ -24,13 +31,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
-
-import android.content.Context;
-import android.os.Bundle;
-import android.support.v7.media.MediaRouteSelector;
-import android.support.v7.media.MediaRouter;
-import android.support.v7.media.MediaRouter.RouteInfo;
-import android.util.Log;
 
 import java.util.Observable;
 

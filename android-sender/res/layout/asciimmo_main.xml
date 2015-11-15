@@ -22,7 +22,7 @@ limitations under the License.
     android:orientation="horizontal"
     tools:context=".GameActivity" >
 
-    <com.google.cast.samples.games.starcast.TouchControllerView
+    <devfest2015.asciimmo.TouchControllerView
         android:id="@+id/touch_controller"
         android:layout_width="0dp"
         android:layout_height="match_parent"
